@@ -21,7 +21,7 @@ jobs:
 
     deployment:
       npm:
-        tag: /v[0-9]+(\.[0-9]+)*/
+        tag: /v\d.*/
         commands:
           - npm publish
 
