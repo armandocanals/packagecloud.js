@@ -4,10 +4,6 @@
 #
 version: 2
 
-dependencies:
-  pre:
-    - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-    
 jobs:
   build:
     docker:
@@ -19,6 +15,10 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
+    dependencies:
+      pre:
+        - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      
     working_directory: ~/repo
 
     steps:
@@ -41,9 +41,9 @@ jobs:
       # run tests!
       - run: yarn test
 
-deployment:
-  npm:
-    tag: /v[0-9]+(\.[0-9]+)*/
+    deployment:
+      npm:
+        tag: /v[0-9]+(\.[0-9]+)*/
         commands:
       - npm publish
 
