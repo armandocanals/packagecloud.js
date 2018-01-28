@@ -23,7 +23,7 @@ jobs:
       npm:
         tag: /v[0-9]+(\.[0-9]+)*/
         commands:
-      - npm publish
+          - npm publish
 
     working_directory: ~/repo
 
