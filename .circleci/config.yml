@@ -2,23 +2,30 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-general:
-  branches:
-    only:
-      - master
-machine:
-  node:
-    version: 5.0.0
-dependencies:
-  pre:
-    - npm install
-    - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-steps:
-  - checkout
-  # run tests!
-  - run: yarn test
-deployment:
-  production:
-    tag: /v\d.*/
-    commands:
-      - npm publish
+version: 2
+
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    dependencies:
+      pre:
+        - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+    deployment:
+      npm:
+        tag: /v\d.*/
+        commands:
+          - npm publish
+
+    working_directory: ~/repo
+
+    steps:
+      - run: yarn test
