@@ -18,12 +18,6 @@ jobs:
     dependencies:
       pre:
         - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-        
-    deployment:
-      production:
-        branch: master
-        commands:
-          - npm publish
 
     working_directory: ~/repo
 
@@ -31,3 +25,5 @@ jobs:
       - checkout
       - run: npm install
       - run: yarn test
+      - deploy:
+          command: npm publish
