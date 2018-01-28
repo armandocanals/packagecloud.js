@@ -22,8 +22,8 @@ jobs:
     deployment:
       npm:
         tag: /v\d.*/
-        commands:
-          - npm publish
+          commands:
+            - npm publish
 
     working_directory: ~/repo
 
