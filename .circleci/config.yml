@@ -17,7 +17,6 @@ jobs:
 
     dependencies:
       pre:
-        - npm install
         - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
     deployment:
@@ -30,5 +29,5 @@ jobs:
 
     steps:
       - checkout
-      # run tests!
+      - npm install
       - run: yarn test
