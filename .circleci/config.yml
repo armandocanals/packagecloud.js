@@ -15,12 +15,15 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
+    dependencies:
+      pre:
+        - echo "//packagecloud.io/armando/test/npm/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
     working_directory: ~/repo
 
     steps:
       - checkout
       - run: npm install
       - run: yarn test
-      - run: echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - deploy:
           command: npm publish
