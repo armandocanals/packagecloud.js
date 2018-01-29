@@ -17,7 +17,7 @@ jobs:
 
     dependencies:
       pre:
-        - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+        - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
 
     working_directory: ~/repo
 
