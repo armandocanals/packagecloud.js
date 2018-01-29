@@ -35,4 +35,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
       - deploy:
+          command: echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
           command: npm publish
