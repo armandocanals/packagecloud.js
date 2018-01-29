@@ -30,6 +30,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
-      - run: echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/repo/.npmrc
+      - run: 'echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc'
       - deploy:
           command: npm publish
