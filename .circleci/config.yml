@@ -34,5 +34,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
+      - run: echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login --registry "https://packagecloud.io/armando/test/npm/"
       - deploy:
           command: npm publish
