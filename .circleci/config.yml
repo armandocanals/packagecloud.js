@@ -32,4 +32,4 @@ jobs:
       - run: yarn test
       - run: 'echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc'
       - deploy:
-          command: npm publish
+          command: npm publish --registry='https://packagecloud.io/armando/test/npm/'
