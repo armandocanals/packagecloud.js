@@ -15,10 +15,6 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    dependencies:
-      pre:
-        - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login --registry "https://packagecloud.io/armando/test/npm/"
-
     working_directory: ~/repo
 
     steps:
@@ -34,6 +30,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
-      - run: echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login --registry "https://packagecloud.io/armando/test/npm/"
+      - run: echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - deploy:
           command: npm publish
