@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 1
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
 
     dependencies:
       pre:
-        - echo "//packagecloud.io/armando/test/npm/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+        - echo "//packagecloud.io/armando/test/npm/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
     working_directory: ~/repo
 
