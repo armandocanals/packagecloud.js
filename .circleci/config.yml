@@ -32,4 +32,4 @@ jobs:
       - run: yarn test
       - run: 'echo "//f49acacc.ngrok.io/armando/test/npm/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc'
       - deploy:
-          command: npm publish --registry='https://1b036548.ngrok.io/armando/test/npm/'
+          command: npm publish --registry='https://f49acacc.ngrok.io/armando/test/npm/'
