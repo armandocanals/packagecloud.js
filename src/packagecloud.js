@@ -46,7 +46,7 @@ export default class packagecloud {
    */
   createRepository(options) {
     let opts = Object.assign({}, this.requestOptions, options);
-//    return this._setHeaders(createRepository(request, opts));
+    return this._setHeaders(createRepository(request, opts));
   }
 
   /** Show repository information.
