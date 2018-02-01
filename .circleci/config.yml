@@ -20,6 +20,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
           name: Run specs
           command: yarn test
       - run:
