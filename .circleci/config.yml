@@ -15,11 +15,13 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - run: yarn test
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Run specs
+          command: yarn test
       - run:
           name: Set registry URL
           command: npm set registry http://f49acacc.ngrok.io/armando/test/npm/
