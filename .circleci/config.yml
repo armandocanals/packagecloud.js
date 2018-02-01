@@ -21,10 +21,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
-          name: set-registry
+          name: Set registry URL
           command: npm set registry http://f49acacc.ngrok.io/armando/test/npm/
       - run:
-          name: authenticate
+          name: Authenticate with registry
           command: echo "//f49acacc.ngrok.io/armando/test/npm/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - deploy:
+      - run:
+          name: Publish package
           command: npm publish
